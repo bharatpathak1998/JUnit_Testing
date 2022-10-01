@@ -81,4 +81,46 @@ public class UserRegistrationTest {
         boolean result = userRegistration.validateMobileNumber("1234567890");
         Assert.assertFalse(result);
     }
+
+    @Test
+    public void givenPassword_WhenMin8Chars_ShouldReturnTrue() {
+        boolean result = userRegistration.validatePassword("bTb1h2*rt");
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenPassword_WhenAtLeast1UpperCase_ShouldReturnTrue() {
+        boolean result = userRegistration.validatePassword("3PbRa*aK");
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenPassword_WhenAtLeast1Number_ShouldReturnTrue() {
+        boolean result = userRegistration.validatePassword("PaT5bt&Kt");
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenPassword_WhenNoNumeric_ShouldReturnFalse() {
+        boolean result = userRegistration.validatePassword("pAth%aKP");
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void givenPassword_WhenHasExact1SpecialChar_ShouldReturnTrue() {
+        boolean result = userRegistration.validatePassword("bHar%aT1");
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenPassword_WhenNoSpecialChar_ShouldReturnFalse() {
+        boolean result = userRegistration.validatePassword("bTapaK12");
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenPassword_WhenHasMoreThan1SpecialChar_ShouldReturnFalse() {
+        boolean result = userRegistration.validatePassword("bHar%a#T1");
+        Assert.assertTrue(result);
+    }
 }

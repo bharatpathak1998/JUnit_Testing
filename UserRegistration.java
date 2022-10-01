@@ -5,6 +5,7 @@ public class UserRegistration {
     public static final String NAME_PATTERN = "^[A-Z][a-z]{2,}";
     public static final String EMAIL_PATTERN = "^[a-zA-Z0-9]+[.+-]?[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.][a-zA-Z]+[.]?[a-zA-Z]+[,]?$";
     public static final String MOBILE_PATTERN = "^[0-9]{0,2}[ ][0-9]{10}";
+    public static final String PASSWORD_PATTERN = "(?=.*[A-Z]+)(?=.*[0-9]+).{8,}";
     public boolean validateFirstName(String firstName) {
         return patternChecker(firstName, NAME_PATTERN);
     }
@@ -19,6 +20,10 @@ public class UserRegistration {
 
     public boolean validateMobileNumber(String mobileNumber) {
         return patternChecker(mobileNumber, MOBILE_PATTERN);
+    }
+
+    public boolean validatePassword(String password) {
+        return patternChecker(password, PASSWORD_PATTERN);
     }
 
     public boolean patternChecker(String input,String fieldPattern) {
