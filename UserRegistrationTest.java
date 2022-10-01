@@ -57,4 +57,28 @@ public class UserRegistrationTest {
         boolean result = userRegistration.validateEmailId("abc.xyz@bl.co.in");
         Assert.assertTrue(result);
     }
+
+    @Test
+    public void givenMobileNumber_WhenSpaceIsMentioned_ShouldReturnTrue(){
+        boolean result = userRegistration.validateMobileNumber("91 7559201322");
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenMobileNumber_WhenSpaceNotMentioned_ShouldReturnFalse() {
+        boolean result = userRegistration.validateMobileNumber("917559201322");
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void givenMobileNumber_WhenLessDigits_ShouldReturnFalse() {
+        boolean result = userRegistration.validateMobileNumber("755920132");
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void givenMobileNumber_WhenNotStartWith91_ShouldReturnFalse() {
+        boolean result = userRegistration.validateMobileNumber("1234567890");
+        Assert.assertFalse(result);
+    }
 }
