@@ -7,6 +7,10 @@ public class UserRegistration {
         return patternChecker(firstName, NAME_PATTERN);
     }
 
+    public boolean validateLastName(String lastName) {
+        return patternChecker(lastName, NAME_PATTERN);
+    }
+
     public boolean patternChecker(String input,String fieldPattern) {
         Pattern pattern = Pattern.compile(fieldPattern);
         Matcher matcher = pattern.matcher(input);
